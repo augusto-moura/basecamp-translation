@@ -13,5 +13,15 @@
           ],
           "js": ["basecamp_translator.js"]
       }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [ "lang/pt-BR.json" ],
+        "matches": [ 
+          "https://basecamp.com/*",
+          "https://*.basecamp.com/*"
+        ]
+      }
+      
     ]
-}
+  }
