@@ -12,6 +12,15 @@
 	
 	"Pinned &amp; recent projects below": "Projetos fixados e recentes abaixo",
 	"View all in a list": "Visualizar todos em uma lista",
+	"View templates": "Ver templates",
 	"Press": "Pressione",
-	"anytime to jump": "a qualquer momento para saltar"
+	"anytime to jump": "a qualquer momento para saltar",
+	
+	"Nothing new for you.": "Nada novo para você.",
+	"Previous notifications": "Notificações anteriores",
+	"Completed: ": "Completou: ",
+	"Overdue: ": "Atrasado: ",
+	"Added: ": "Adicionou: ",
+	"Assigned you: ": "Atribuiu a você: ",
+	"See all your previous notifications…": "Ver todas as suas notificações anteriores…"
 }
