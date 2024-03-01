@@ -11,7 +11,7 @@
               "https://basecamp.com/*",
               "https://*.basecamp.com/*"
           ],
-          "js": ["basecamp_translator.js"]
+          "js": ["dist/basecamp_translator.js"]
       }
     ],
     "web_accessible_resources": [
