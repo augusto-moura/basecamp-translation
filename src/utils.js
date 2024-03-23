@@ -8,7 +8,7 @@ export function execute_after_element_exists(elementSelector, callback) {
 		let elementThatShouldExist = document.querySelector(elementSelector);
 		if (elementThatShouldExist) {
 			//console.log('element exists');
-			callback();
+			setTimeout(callback, 400);
 			clearInterval(checkElementExists);
 			return;
 		}
@@ -29,4 +29,11 @@ export function __element(element, stringsToTranslate) {
 	}
 
 	element.innerHTML = newHtml;
+}
+
+export function __selector(selector, stringsToTranslate) {
+	document.querySelectorAll(selector)
+		.forEach(
+			element => __element(element, stringsToTranslate)
+		);
 }

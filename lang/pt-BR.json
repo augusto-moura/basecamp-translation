@@ -9,11 +9,10 @@
 	
 	"Make a new project": "Iniciar novo projeto",
 	"Invite people": "Convidar pessoas",
-	
 	"Pinned &amp; recent projects below": "Projetos fixados e recentes abaixo",
 	"View all in a list": "Visualizar todos em uma lista",
 	"View templates": "Ver templates",
-	"Press": "Pressione",
+	"Press": "Aperte",
 	"anytime to jump": "a qualquer momento para saltar",
 	"Recently visited": "Visitados recentemente",
 	"Your Schedule": "Sua agenda",
@@ -50,6 +49,9 @@
 	"October" : "Outubro",
 	"November" : "Novembro",
 	"December" : "Dezembro",
+
+	"Your Assignments": "Suas atribuições",
+	"Up next –": "A seguir –",
 	
 	"Nothing new for you.": "Nada novo para você.",
 	"New for you": "Novo para você",
@@ -60,7 +62,18 @@
 	"Overdue: ": "Atrasado: ",
 	"Due soon: ": "Prazo próximo: ",
 	"Added: ": "Adicionou: ",
+	"In $1 hour(s): ": "Em $1 hora(s): ",
 	"@mentioned you in:": "@mencionou você em:",
 	"Assigned you: ": "Atribuiu a você: ",
-	"See all your previous notifications…": "Ver todas as suas notificações anteriores…"
+	"See all your previous notifications…": "Ver todas as suas notificações anteriores…",
+	"See previous notifications…": "Ver notificações anteriores…",
+
+	"My Assignments": "Minhas Atribuições",
+	"My Bookmarks": "Meus Favoritos",
+	"My Schedule": "Minha Agenda",
+	"My Drafts": "Meus Rascunhos",
+	"My Recent Activity": "Minha Atividade Recente",
+	"My Boosts": "Minhas Reações",
+	"Boosts For You": "Reações Para Você",
+	"for more recent history": "para mais do histórico recente"
 }

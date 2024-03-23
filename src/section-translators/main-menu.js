@@ -1,37 +1,26 @@
-import { __, delay } from "../utils";
+import { __, __element, __selector, delay } from "../utils";
 
 function bc_trans_hey_expanded_content() {
 	document
-		.querySelectorAll("#navigation_readings section.readings--empty")
-		.forEach((el) => {
-			el.innerHTML = el.innerHTML.replace(
-				"Nothing new for you.",
-				__("Nothing new for you.")
-			);
-		});
+		.querySelectorAll("#navigation_readings")
+		.forEach((el) => __element(el, [
+			"See previous notifications…",
+			"Nothing new for you.",
+		]));
 
-	document
-		.querySelectorAll("#navigation_readings section.readings--reads")
-		.forEach((el) => {
-			el.innerHTML = el.innerHTML.replace(
-				"Previous notifications",
-				__("Previous notifications")
-			);
-		});
+	document.querySelectorAll("#navigation_readings section.readings--reads")
+		.forEach((el) => __element(el, ["Previous notifications"]));
 
-	document
-		.querySelectorAll("#navigation_readings section.readings--unreads")
-		.forEach((el) => {
-			el.innerHTML = el.innerHTML
-				.replace("New for you", __("New for you"))
-				.replace("Mark all read", __("Mark all read"))
-		});
+	document.querySelectorAll("#navigation_readings section.readings--unreads")
+		.forEach((el) => __element(el, ["New for you", "Mark all read"]));
 
 	document
 		.querySelectorAll("#navigation_readings section.readings--memories h3")
 		.forEach((el) => {
-			el.innerHTML = el.innerHTML
-				.replace("Don’t Forget", __("Don't Forget"));
+			el.innerHTML = el.innerHTML.replace(
+				"Don’t Forget",
+				__("Don't Forget")
+			);
 		});
 
 	document
@@ -43,7 +32,8 @@ function bc_trans_hey_expanded_content() {
 				.replace("Due soon: ", __("Due soon: "))
 				.replace("Added: ", __("Added: "))
 				.replace("Assigned you: ", __("Assigned you: "))
-				.replace("@mentioned you in:", __("@mentioned you in:"));
+				.replace("@mentioned you in:", __("@mentioned you in:"))
+				.replace(/In (\d+) hours*: /, __("In $1 hour(s): "));
 		});
 
 	document
@@ -56,8 +46,49 @@ function bc_trans_hey_expanded_content() {
 		});
 }
 
-export let translateMainMenu = function() {
+function bc_trans_my_area_expanded_content() {
+	__selector("#navigation_my_stuff", [
+		"My Assignments",
+		"My Bookmarks",
+		"My Schedule",
+		"My Drafts",
+		"My Recent Activity",
+		"My Boosts",
+		"Recently visited",
+		"Boosts For You",
+		"Press",
+		"for more recent history",
+	]);
+}
+
+export function waitSelectorToLoadThenExecute(selectorWithLoading, fnCallback){
+	var checkLoadingComplete = setInterval(() => {
+		let elementWithLoading = document.querySelector(selectorWithLoading);
+		if (!elementWithLoading.classList.contains("loading")) {
+			fnCallback();
+
+			delay(400).then(() => {
+				fnCallback();
+				clearInterval(checkLoadingComplete);
+			});
+		}
+	}, 200);
+}
+
+export function addListenerToMenuItem(menuItemSelector, fnTranslateExpandedContent){
+	document
+		.querySelector(menuItemSelector)
+		.addEventListener("mousedown", (event) => {
+			waitSelectorToLoadThenExecute(
+				menuItemSelector,
+				fnTranslateExpandedContent
+			);
+		});
+}
+
+export let translateMainMenu = function () {
 	addListenerToHeyMenuItem();
+	addListenerToMyAreaMenuItem()
 
 	document
 		.querySelector(".nav__main")
@@ -72,24 +103,17 @@ export let translateMainMenu = function() {
 				.replace("My Stuff", __("My Stuff"))
 				.replace("Find", __("Find"));
 		});
+};
+
+export function addListenerToHeyMenuItem() {
+	addListenerToMenuItem(
+		'[data-load-target="#navigation_readings"]',
+		bc_trans_hey_expanded_content
+	)
 }
-
-export function addListenerToHeyMenuItem () {
-	document
-	.querySelector('[data-load-target="#navigation_readings"]')
-	.addEventListener("mousedown", (event) => {
-		var checkLoadingComplete = setInterval(() => {
-			let elementWithLoading = document.querySelector(
-				'[data-load-target="#navigation_readings"]'
-			);
-			if (!elementWithLoading.classList.contains("loading")) {
-				bc_trans_hey_expanded_content();
-
-				delay(400).then(() => {
-					bc_trans_hey_expanded_content();
-					clearInterval(checkLoadingComplete);
-				});
-			}
-		}, 200);
-	});
+export function addListenerToMyAreaMenuItem() {
+	addListenerToMenuItem(
+		'[data-load-target="#navigation_my_stuff"]',
+		bc_trans_my_area_expanded_content
+	)
 }

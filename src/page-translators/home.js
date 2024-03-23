@@ -1,4 +1,4 @@
-import { __ , __element, execute_after_element_exists } from '../utils'
+import { __, __element, execute_after_element_exists } from "../utils";
 
 function bc_trans_schedule_widget() {
 	//TODO: translate "Apr 14" to "14/04"
@@ -56,12 +56,23 @@ function bc_trans_schedule_widget() {
 		);
 }
 
-export function translateHome(){
-	document.querySelectorAll(".btn--primary").forEach((el) => {
-		el.innerHTML = el.innerHTML
-			.replace("Make a new project", __("Make a new project"))
-			.replace("Invite people", __("Invite people"));
-	});
+function bc_trans_assignments_widget() {
+	document.querySelectorAll(".project-index__mystuff-header")
+		.forEach(el => __element(el, [
+			'Your Assignments',
+		]));
+
+	document.querySelectorAll(".project-index__assignments")
+		.forEach(el => __element(el, [
+			'Up next –',
+			'see all',
+		]));
+}
+
+export function translateHome() {
+	document
+		.querySelectorAll(".panel-home__buttons")
+		.forEach((el) => __element(el, ["Make a new project", "Invite people"]));
 
 	document
 		.querySelectorAll("header p")
@@ -82,16 +93,17 @@ export function translateHome(){
 	document
 		.querySelectorAll("section.project-index__mystuff")
 		.forEach((el) =>
-			__element(el, [
-				"Your Schedule",
-				"A few upcoming events",
-				"see all",
-			])
+			__element(el, ["Your Schedule", "A few upcoming events", "see all"])
 		);
 
 	execute_after_element_exists(
 		".schedule-day:not(.schedule-day--placeholder)",
 		bc_trans_schedule_widget
+	);
+
+	execute_after_element_exists(
+		".project-index__assignments ul li",
+		bc_trans_assignments_widget
 	);
 
 	//TODO: add listener for navigation in the schedule widget, and reapply translations.
