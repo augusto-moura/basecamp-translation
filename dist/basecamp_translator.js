@@ -1,7 +1,7 @@
-function u(e) {
+function s(e) {
   return new Promise((t) => setTimeout(t, e));
 }
-function c(e, t) {
+function l(e, t) {
   var r = setInterval(() => {
     if (document.querySelector(e)) {
       setTimeout(t, 400), clearInterval(r);
@@ -20,7 +20,7 @@ function o(e, t) {
   }
   e.innerHTML = r;
 }
-function s(e, t) {
+function u(e, t) {
   document.querySelectorAll(e).forEach(
     (r) => o(r, t)
   );
@@ -43,8 +43,8 @@ function d() {
     );
   });
 }
-function m() {
-  s("#navigation_my_stuff", [
+function _() {
+  u("#navigation_my_stuff", [
     "My Assignments",
     "My Bookmarks",
     "My Schedule",
@@ -57,39 +57,51 @@ function m() {
     "for more recent history"
   ]);
 }
-function _(e, t) {
+function m() {
+  console.log("bc_trans_pings_expanded_content"), u("#navigation_pings", [
+    "Start a private chat with…",
+    "Recent Pings"
+  ]), document.querySelector("#circle_users").focus();
+}
+function y(e, t) {
   var r = setInterval(() => {
-    document.querySelector(e).classList.contains("loading") || (t(), u(400).then(() => {
+    document.querySelector(e).classList.contains("loading") || (t(), s(400).then(() => {
       t(), clearInterval(r);
     }));
   }, 200);
 }
-function l(e, t) {
+function c(e, t) {
   document.querySelector(e).addEventListener("mousedown", (r) => {
-    _(
+    y(
       e,
       t
     );
   });
 }
-let y = function() {
-  f(), h(), document.querySelector(".nav__main").querySelectorAll(".nav__item .nav__link").forEach((e) => {
+let f = function() {
+  p(), g(), h(), document.querySelector(".nav__main").querySelectorAll(".nav__item .nav__link").forEach((e) => {
     e.innerHTML = e.innerHTML.replace("Home", n("Home")).replace("Lineup", n("Lineup")).replace("Pings", n("Pings")).replace("Hey!", n("Hey!")).replace("Activity", n("Activity")).replace("My Stuff", n("My Stuff")).replace("Find", n("Find"));
   });
 };
-function f() {
-  l(
+function p() {
+  c(
     '[data-load-target="#navigation_readings"]',
     d
   );
 }
-function h() {
-  l(
+function g() {
+  c(
     '[data-load-target="#navigation_my_stuff"]',
+    _
+  );
+}
+function h() {
+  c(
+    '[data-load-target="#navigation_pings"] a.nav__link',
     m
   );
 }
-function p() {
+function v() {
   document.querySelectorAll(".schedule-day__dates").forEach(
     (e) => o(e, [
       "Mon",
@@ -136,7 +148,7 @@ function p() {
     ])
   );
 }
-function g() {
+function S() {
   document.querySelectorAll(".project-index__mystuff-header").forEach((e) => o(e, [
     "Your Assignments"
   ])), document.querySelectorAll(".project-index__assignments").forEach((e) => o(e, [
@@ -144,7 +156,7 @@ function g() {
     "see all"
   ]));
 }
-function v() {
+function M() {
   document.querySelectorAll(".panel-home__buttons").forEach((e) => o(e, ["Make a new project", "Invite people"])), document.querySelectorAll("header p").forEach(
     (e) => o(e, [
       "Pinned &amp; recent projects below",
@@ -155,21 +167,21 @@ function v() {
     ])
   ), document.querySelectorAll("#home_project_cards").forEach((e) => o(e, ["Recently visited"])), document.querySelectorAll("section.project-index__mystuff").forEach(
     (e) => o(e, ["Your Schedule", "A few upcoming events", "see all"])
-  ), c(
+  ), l(
     ".schedule-day:not(.schedule-day--placeholder)",
-    p
-  ), c(
+    v
+  ), l(
     ".project-index__assignments ul li",
-    g
+    S
   );
 }
-var S = "pt-BR";
+var A = "pt-BR";
 window.bc_trans_map = null;
-var M = chrome.runtime.getURL(`lang/${S}.json`);
+var T = chrome.runtime.getURL(`lang/${A}.json`);
 (function() {
-  fetch(M).then((e) => e.json()).then((e) => {
+  fetch(T).then((e) => e.json()).then((e) => {
     window.bc_trans_map = e;
   }).then(() => {
-    y(), v();
+    f(), M();
   });
 })();

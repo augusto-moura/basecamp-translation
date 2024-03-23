@@ -61,6 +61,17 @@ function bc_trans_my_area_expanded_content() {
 	]);
 }
 
+function bc_trans_pings_expanded_content() {
+	console.log('bc_trans_pings_expanded_content');
+
+	__selector("#navigation_pings", [
+		"Start a private chat with…",
+		"Recent Pings",
+	]);
+
+	document.querySelector('#circle_users').focus();
+}
+
 export function waitSelectorToLoadThenExecute(selectorWithLoading, fnCallback){
 	var checkLoadingComplete = setInterval(() => {
 		let elementWithLoading = document.querySelector(selectorWithLoading);
@@ -88,7 +99,8 @@ export function addListenerToMenuItem(menuItemSelector, fnTranslateExpandedConte
 
 export let translateMainMenu = function () {
 	addListenerToHeyMenuItem();
-	addListenerToMyAreaMenuItem()
+	addListenerToMyAreaMenuItem();
+	addListenerToPingsMenuItem();
 
 	document
 		.querySelector(".nav__main")
@@ -115,5 +127,11 @@ export function addListenerToMyAreaMenuItem() {
 	addListenerToMenuItem(
 		'[data-load-target="#navigation_my_stuff"]',
 		bc_trans_my_area_expanded_content
+	)
+}
+export function addListenerToPingsMenuItem() {
+	addListenerToMenuItem(
+		'[data-load-target="#navigation_pings"] a.nav__link',
+		bc_trans_pings_expanded_content
 	)
 }
