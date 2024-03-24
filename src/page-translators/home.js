@@ -74,7 +74,7 @@ function bc_trans_assignments_widget() {
 		]));
 }
 
-export function translateHome() {
+export function translateHomePage() {
 	document
 		.querySelectorAll(".panel-home__buttons")
 		.forEach((el) => __element(el, ["Make a new project", "Invite people"]));

@@ -1,5 +1,4 @@
-import { translateMainMenu } from "./section-translators/main-menu.js";
-import { translateHome } from "./page-translators/home.js";
+import { translateCurrentPage } from "./page-translators/page-translator.js";
 
 //TODO: listen to history API
 
@@ -14,7 +13,6 @@ var bc_trans_map_url = chrome.runtime.getURL(`lang/${bc_trans_locale}.json`);
 			window.bc_trans_map = trans_map_obj;
 		})
 		.then(() => {
-			translateMainMenu();
-			translateHome();
+			translateCurrentPage();
 		});
 })();

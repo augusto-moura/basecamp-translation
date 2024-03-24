@@ -83,7 +83,7 @@ function h() {
     "To-dos"
   ]), document.querySelector("#search_q").focus();
 }
-function y(e, n) {
+function f(e, n) {
   var o = setInterval(() => {
     document.querySelector(e).classList.contains("loading") || (n(), u(400).then(() => {
       n(), clearInterval(o);
@@ -92,14 +92,14 @@ function y(e, n) {
 }
 function s(e, n) {
   document.querySelector(e).addEventListener("mousedown", (o) => {
-    y(
+    f(
       e,
       n
     );
   });
 }
-let f = function() {
-  g(), p(), v(), S(), r(".nav__main .nav__item .nav__link", [
+let p = function() {
+  y(), g(), v(), S(), r(".nav__main .nav__item .nav__link", [
     "Home",
     "Lineup",
     "Pings",
@@ -111,13 +111,13 @@ let f = function() {
     "Me"
   ]);
 };
-function g() {
+function y() {
   s(
     '[data-load-target="#navigation_readings"]',
     d
   );
 }
-function p() {
+function g() {
   s(
     '[data-load-target="#navigation_my_stuff"]',
     _
@@ -193,7 +193,7 @@ function A() {
     "see all"
   ]));
 }
-function E() {
+function w() {
   document.querySelectorAll(".panel-home__buttons").forEach((e) => t(e, ["Make a new project", "Invite people"])), document.querySelectorAll("header p").forEach(
     (e) => t(e, [
       "Pinned &amp; recent projects below",
@@ -216,13 +216,40 @@ function E() {
     A
   );
 }
+function b() {
+  r(".action-sheet__content", [
+    "Pin project",
+    "Unpin project",
+    "Switch to just following",
+    "Edit project details",
+    "Set up tools",
+    "Set up people",
+    "Save as a project template",
+    "Archive or delete",
+    "See items in the trash",
+    "For developers",
+    "Set up webhooks"
+  ]);
+}
+function E() {
+  let n = window.location.href.replace("//", "");
+  switch (n = n.substring(n.indexOf("/")).replaceAll(/\d+/g, "1").replace(/\/$/, ""), p(), n) {
+    case "/1":
+    case "/1/projects":
+      w();
+      break;
+    case "/1/projects/1":
+      b();
+      break;
+  }
+}
 var T = "pt-BR";
 window.bc_trans_map = null;
-var b = chrome.runtime.getURL(`lang/${T}.json`);
+var q = chrome.runtime.getURL(`lang/${T}.json`);
 (function() {
-  fetch(b).then((e) => e.json()).then((e) => {
+  fetch(q).then((e) => e.json()).then((e) => {
     window.bc_trans_map = e;
   }).then(() => {
-    f(), E();
+    E();
   });
 })();

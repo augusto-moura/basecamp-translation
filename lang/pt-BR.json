@@ -98,5 +98,17 @@
 	"Folders": "Pastas",
 	"Forwarded emails": "E-mails encaminhados",
 	"Messages": "Mensagens",
-	"To-dos": "Afazeres"
+	"To-dos": "Afazeres",
+
+	"Pin project": "Fixar projeto",
+	"Unpin project": "Desafixar projeto",
+	"Switch to just following": "Alterar para apenas seguindo",
+	"Edit project details": "Editar detalhes do proje'to",
+	"Set up tools": "Definir ferramentas",
+	"Set up people": "Definir pessoas",
+	"Save as a project template": "Salvar como template de projeto",
+	"Archive or delete": "Arquivar ou deletar",
+	"See items in the trash": "Ver itens na lixeira",
+	"For developers": "Para desenvolvedores",
+	"Set up webhooks": "Definir webhooks"
 }
