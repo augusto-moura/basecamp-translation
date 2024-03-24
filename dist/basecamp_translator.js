@@ -1,50 +1,50 @@
-function s(e) {
-  return new Promise((t) => setTimeout(t, e));
+function u(e) {
+  return new Promise((n) => setTimeout(n, e));
 }
-function l(e, t) {
-  var r = setInterval(() => {
+function l(e, n) {
+  var o = setInterval(() => {
     if (document.querySelector(e)) {
-      setTimeout(t, 400), clearInterval(r);
+      setTimeout(n, 400), clearInterval(o);
       return;
     }
   }, 200);
 }
-function n(e) {
+function a(e) {
   return window.bc_trans_map[e] ?? e;
 }
-function o(e, t) {
-  let r = e.innerHTML;
-  for (i = 0; i < t.length; i++) {
-    let a = t[i];
-    r = r.replace(a, n(a));
+function t(e, n) {
+  let o = e.innerHTML;
+  for (i = 0; i < n.length; i++) {
+    let c = n[i];
+    o = o.replace(c, a(c));
   }
-  e.innerHTML = r;
+  e.innerHTML = o;
 }
-function u(e, t) {
+function r(e, n) {
   document.querySelectorAll(e).forEach(
-    (r) => o(r, t)
+    (o) => t(o, n)
   );
 }
 function d() {
-  document.querySelectorAll("#navigation_readings").forEach((e) => o(e, [
+  document.querySelectorAll("#navigation_readings").forEach((e) => t(e, [
     "See previous notifications…",
     "Nothing new for you."
-  ])), document.querySelectorAll("#navigation_readings section.readings--reads").forEach((e) => o(e, ["Previous notifications"])), document.querySelectorAll("#navigation_readings section.readings--unreads").forEach((e) => o(e, ["New for you", "Mark all read"])), document.querySelectorAll("#navigation_readings section.readings--memories h3").forEach((e) => {
+  ])), document.querySelectorAll("#navigation_readings section.readings--reads").forEach((e) => t(e, ["Previous notifications"])), document.querySelectorAll("#navigation_readings section.readings--unreads").forEach((e) => t(e, ["New for you", "Mark all read"])), document.querySelectorAll("#navigation_readings section.readings--memories h3").forEach((e) => {
     e.innerHTML = e.innerHTML.replace(
       "Don’t Forget",
-      n("Don't Forget")
+      a("Don't Forget")
     );
   }), document.querySelectorAll("#navigation_readings section h4").forEach((e) => {
-    e.innerHTML = e.innerHTML.replace("Completed: ", n("Completed: ")).replace("Overdue: ", n("Overdue: ")).replace("Due soon: ", n("Due soon: ")).replace("Added: ", n("Added: ")).replace("Assigned you: ", n("Assigned you: ")).replace("@mentioned you in:", n("@mentioned you in:")).replace(/In (\d+) hours*: /, n("In $1 hour(s): "));
+    e.innerHTML = e.innerHTML.replace("Completed: ", a("Completed: ")).replace("Overdue: ", a("Overdue: ")).replace("Due soon: ", a("Due soon: ")).replace("Added: ", a("Added: ")).replace("Assigned you: ", a("Assigned you: ")).replace("@mentioned you in:", a("@mentioned you in:")).replace(/In (\d+) hours*: /, a("In $1 hour(s): "));
   }), document.querySelectorAll("#navigation_readings section.readings--reads footer").forEach((e) => {
     e.innerHTML = e.innerHTML.replace(
       "See all your previous notifications…",
-      n("See all your previous notifications…")
+      a("See all your previous notifications…")
     );
   });
 }
 function _() {
-  u("#navigation_my_stuff", [
+  r("#navigation_my_stuff", [
     "My Assignments",
     "My Bookmarks",
     "My Schedule",
@@ -58,52 +58,86 @@ function _() {
   ]);
 }
 function m() {
-  console.log("bc_trans_pings_expanded_content"), u("#navigation_pings", [
+  r("#navigation_pings", [
     "Start a private chat with…",
     "Recent Pings"
   ]), document.querySelector("#circle_users").focus();
 }
-function y(e, t) {
-  var r = setInterval(() => {
-    document.querySelector(e).classList.contains("loading") || (t(), s(400).then(() => {
-      t(), clearInterval(r);
+function h() {
+  r("[data-menu-section=search] .expanded_content", [
+    "Search for…",
+    "Search Everything",
+    "by Anyone",
+    "Everywhere",
+    "Card tables",
+    "Chats",
+    "Check-ins",
+    "Client emails",
+    "Comments",
+    "Documents",
+    "Events",
+    "Files",
+    "Folders",
+    "Forwarded emails",
+    "Messages",
+    "To-dos"
+  ]), document.querySelector("#search_q").focus();
+}
+function y(e, n) {
+  var o = setInterval(() => {
+    document.querySelector(e).classList.contains("loading") || (n(), u(400).then(() => {
+      n(), clearInterval(o);
     }));
   }, 200);
 }
-function c(e, t) {
-  document.querySelector(e).addEventListener("mousedown", (r) => {
+function s(e, n) {
+  document.querySelector(e).addEventListener("mousedown", (o) => {
     y(
       e,
-      t
+      n
     );
   });
 }
 let f = function() {
-  p(), g(), h(), document.querySelector(".nav__main").querySelectorAll(".nav__item .nav__link").forEach((e) => {
-    e.innerHTML = e.innerHTML.replace("Home", n("Home")).replace("Lineup", n("Lineup")).replace("Pings", n("Pings")).replace("Hey!", n("Hey!")).replace("Activity", n("Activity")).replace("My Stuff", n("My Stuff")).replace("Find", n("Find"));
-  });
+  g(), p(), v(), S(), r(".nav__main .nav__item .nav__link", [
+    "Home",
+    "Lineup",
+    "Pings",
+    "Hey!",
+    "Activity",
+    "My Stuff",
+    "Find"
+  ]), r(".nav__main .nav__item .nav__link span", [
+    "Me"
+  ]);
 };
-function p() {
-  c(
+function g() {
+  s(
     '[data-load-target="#navigation_readings"]',
     d
   );
 }
-function g() {
-  c(
+function p() {
+  s(
     '[data-load-target="#navigation_my_stuff"]',
     _
   );
 }
-function h() {
-  c(
+function v() {
+  s(
     '[data-load-target="#navigation_pings"] a.nav__link',
     m
   );
 }
-function v() {
+function S() {
+  s(
+    'li[data-menu-section="search"] a.nav__link',
+    h
+  );
+}
+function M() {
   document.querySelectorAll(".schedule-day__dates").forEach(
-    (e) => o(e, [
+    (e) => t(e, [
       "Mon",
       "Tue",
       "Wed",
@@ -125,7 +159,7 @@ function v() {
       "Dec"
     ])
   ), document.querySelectorAll("table.calendar-grid__table thead th").forEach(
-    (e) => o(e, [
+    (e) => t(e, [
       "Mon",
       "Tue",
       "Wed",
@@ -146,42 +180,49 @@ function v() {
       "November",
       "December"
     ])
-  );
+  ), r(".schedule-day__events", [
+    "Nothing’s on the schedule"
+  ]);
 }
-function S() {
-  document.querySelectorAll(".project-index__mystuff-header").forEach((e) => o(e, [
+function A() {
+  document.querySelectorAll(".project-index__mystuff-header").forEach((e) => t(e, [
     "Your Assignments"
-  ])), document.querySelectorAll(".project-index__assignments").forEach((e) => o(e, [
+  ])), document.querySelectorAll(".project-index__assignments").forEach((e) => t(e, [
     "Up next –",
+    "Stuff due soon and recently assigned",
     "see all"
   ]));
 }
-function M() {
-  document.querySelectorAll(".panel-home__buttons").forEach((e) => o(e, ["Make a new project", "Invite people"])), document.querySelectorAll("header p").forEach(
-    (e) => o(e, [
+function E() {
+  document.querySelectorAll(".panel-home__buttons").forEach((e) => t(e, ["Make a new project", "Invite people"])), document.querySelectorAll("header p").forEach(
+    (e) => t(e, [
       "Pinned &amp; recent projects below",
       "View all in a list",
       "View templates",
       "Press",
       "anytime to jump"
     ])
-  ), document.querySelectorAll("#home_project_cards").forEach((e) => o(e, ["Recently visited"])), document.querySelectorAll("section.project-index__mystuff").forEach(
-    (e) => o(e, ["Your Schedule", "A few upcoming events", "see all"])
+  ), document.querySelectorAll("#home_project_cards").forEach((e) => t(e, ["Recently visited"])), document.querySelectorAll("section.project-index__mystuff").forEach(
+    (e) => t(e, [
+      "Your Schedule",
+      "A few upcoming events",
+      "see all"
+    ])
   ), l(
     ".schedule-day:not(.schedule-day--placeholder)",
-    v
+    M
   ), l(
     ".project-index__assignments ul li",
-    S
+    A
   );
 }
-var A = "pt-BR";
+var T = "pt-BR";
 window.bc_trans_map = null;
-var T = chrome.runtime.getURL(`lang/${A}.json`);
+var b = chrome.runtime.getURL(`lang/${T}.json`);
 (function() {
-  fetch(T).then((e) => e.json()).then((e) => {
+  fetch(b).then((e) => e.json()).then((e) => {
     window.bc_trans_map = e;
   }).then(() => {
-    f(), M();
+    f(), E();
   });
 })();

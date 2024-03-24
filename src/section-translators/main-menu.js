@@ -62,14 +62,34 @@ function bc_trans_my_area_expanded_content() {
 }
 
 function bc_trans_pings_expanded_content() {
-	console.log('bc_trans_pings_expanded_content');
-
 	__selector("#navigation_pings", [
 		"Start a private chat with…",
 		"Recent Pings",
 	]);
 
 	document.querySelector('#circle_users').focus();
+}
+
+function bc_trans_search_expanded_content() {
+	__selector("[data-menu-section=search] .expanded_content", [
+		"Search for…",
+		"Search Everything",
+		"by Anyone",
+		"Everywhere",
+		"Card tables",
+		"Chats",
+		"Check-ins",
+		"Client emails",
+		"Comments",
+		"Documents",
+		"Events",
+		"Files",
+		"Folders",
+		"Forwarded emails",
+		"Messages",
+		"To-dos",
+	]);
+	document.querySelector('#search_q').focus();
 }
 
 export function waitSelectorToLoadThenExecute(selectorWithLoading, fnCallback){
@@ -101,20 +121,21 @@ export let translateMainMenu = function () {
 	addListenerToHeyMenuItem();
 	addListenerToMyAreaMenuItem();
 	addListenerToPingsMenuItem();
+	addListenerToSearchMenuItem();
 
-	document
-		.querySelector(".nav__main")
-		.querySelectorAll(".nav__item .nav__link")
-		.forEach((el) => {
-			el.innerHTML = el.innerHTML
-				.replace("Home", __("Home"))
-				.replace("Lineup", __("Lineup"))
-				.replace("Pings", __("Pings"))
-				.replace("Hey!", __("Hey!"))
-				.replace("Activity", __("Activity"))
-				.replace("My Stuff", __("My Stuff"))
-				.replace("Find", __("Find"));
-		});
+	__selector('.nav__main .nav__item .nav__link', [
+		"Home",
+		"Lineup",
+		"Pings",
+		"Hey!",
+		"Activity",
+		"My Stuff",
+		"Find",
+	])
+
+	__selector('.nav__main .nav__item .nav__link span', [
+		"Me",
+	])
 };
 
 export function addListenerToHeyMenuItem() {
@@ -133,5 +154,11 @@ export function addListenerToPingsMenuItem() {
 	addListenerToMenuItem(
 		'[data-load-target="#navigation_pings"] a.nav__link',
 		bc_trans_pings_expanded_content
+	)
+}
+export function addListenerToSearchMenuItem() {
+	addListenerToMenuItem(
+		'li[data-menu-section="search"] a.nav__link',
+		bc_trans_search_expanded_content
 	)
 }

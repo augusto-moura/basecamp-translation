@@ -5,6 +5,7 @@
 	"Hey!": "Notificações",
     "Activity": "Atividade",
     "My Stuff": "Minha área",
+    "Me": "Eu",
     "Find": "Encontrar",
 	
 	"Make a new project": "Iniciar novo projeto",
@@ -17,6 +18,7 @@
 	"Recently visited": "Visitados recentemente",
 	"Your Schedule": "Sua agenda",
 	"A few upcoming events": "Alguns eventos próximos",
+	"Nothing’s on the schedule": "Nada na agenda",
 	"see all": "ver todos",
 	"Nothing's on the schedule": "nada agendado",
 	"Mon": "Seg",
@@ -52,6 +54,7 @@
 
 	"Your Assignments": "Suas atribuições",
 	"Up next –": "A seguir –",
+	"Stuff due soon and recently assigned": "Com prazo próximo e recentemente atribuídos",
 	
 	"Nothing new for you.": "Nada novo para você.",
 	"New for you": "Novo para você",
@@ -78,5 +81,22 @@
 	"for more recent history": "para mais do histórico recente",
 
 	"Start a private chat with…": "Inicie um chat privado com…",
-	"Recent Pings": "Chats Recentes"
+	"Recent Pings": "Chats Recentes",
+
+	"Search for…": "Procurar por…",
+	"Search Everything": "Procurar Tudo",
+	"by Anyone": "por qualquer um",
+	"Everywhere": "Em todos os locais",
+	"Card tables": "Painéis de cards",
+	"Chats": "Chats",
+	"Check-ins": "Check-ins",
+	"Client emails": "E-mails de clientes",
+	"Comments": "Comentários",
+	"Documents": "Documentos",
+	"Events": "Eventos",
+	"Files": "Arquivos",
+	"Folders": "Pastas",
+	"Forwarded emails": "E-mails encaminhados",
+	"Messages": "Mensagens",
+	"To-dos": "Afazeres"
 }

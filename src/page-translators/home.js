@@ -1,4 +1,4 @@
-import { __, __element, execute_after_element_exists } from "../utils";
+import { __, __element, __selector, execute_after_element_exists } from "../utils";
 
 function bc_trans_schedule_widget() {
 	//TODO: translate "Apr 14" to "14/04"
@@ -54,6 +54,10 @@ function bc_trans_schedule_widget() {
 				"December",
 			])
 		);
+
+	__selector('.schedule-day__events', [
+		"Nothing’s on the schedule",
+	])
 }
 
 function bc_trans_assignments_widget() {
@@ -65,6 +69,7 @@ function bc_trans_assignments_widget() {
 	document.querySelectorAll(".project-index__assignments")
 		.forEach(el => __element(el, [
 			'Up next –',
+			"Stuff due soon and recently assigned",
 			'see all',
 		]));
 }
@@ -93,7 +98,12 @@ export function translateHome() {
 	document
 		.querySelectorAll("section.project-index__mystuff")
 		.forEach((el) =>
-			__element(el, ["Your Schedule", "A few upcoming events", "see all"])
+			__element(el, [
+				"Your Schedule",
+				"A few upcoming events",
+				"see all",
+				
+			])
 		);
 
 	execute_after_element_exists(
