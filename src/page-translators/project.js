@@ -1,4 +1,4 @@
-import { __, __element, __selector, execute_after_element_exists } from "../utils";
+import { __, __element, __selector, arrayWeekdaysAndMonths, execute_after_element_exists } from "../utils";
 
 export function translateProjectPage() {
 	__selector('.action-sheet__content', [
@@ -14,4 +14,24 @@ export function translateProjectPage() {
 		'For developers',
 		'Set up webhooks',
 	]);
+
+	__selector('.panel--project header', [
+		'Set up people',
+		'just following',
+	])
+
+	__selector('.latest-activity__project-headline', [
+		'Project Activity',
+	])
+
+	__selector('.latest-activity--project .date_divider', [
+		'Today',
+		'Yesterday',
+		...arrayWeekdaysAndMonths()
+	]);
+
+	__selector('.door-item', [
+		'Open up',
+	]);
+
 }

@@ -4,7 +4,7 @@
     "manifest_version": 3,
     "version": "0.1",
     "description": "Extensão do Google Chrome para traduzir o Basecamp, ferramenta de gerenciamento de projetos, para o Português Brasileiro | Google Chrome extension for translating Basecamp, the project management app, to Brazilian Portuguese.",
-    "permissions": ["activeTab", "scripting", "declarativeContent", "history"],
+    "permissions": ["activeTab", "scripting", "declarativeContent", "history", "webNavigation", "tabs"],
     "content_scripts": [
       {
           "matches": [

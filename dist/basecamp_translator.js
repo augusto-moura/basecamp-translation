@@ -1,10 +1,10 @@
-function u(e) {
-  return new Promise((n) => setTimeout(n, e));
+function m(e) {
+  return new Promise((t) => setTimeout(t, e));
 }
-function l(e, n) {
-  var o = setInterval(() => {
+function l(e, t) {
+  var r = setInterval(() => {
     if (document.querySelector(e)) {
-      setTimeout(n, 400), clearInterval(o);
+      setTimeout(t, 400), clearInterval(r);
       return;
     }
   }, 200);
@@ -12,24 +12,47 @@ function l(e, n) {
 function a(e) {
   return window.bc_trans_map[e] ?? e;
 }
-function t(e, n) {
-  let o = e.innerHTML;
-  for (i = 0; i < n.length; i++) {
-    let c = n[i];
-    o = o.replace(c, a(c));
+function n(e, t) {
+  let r = e.innerHTML;
+  for (i = 0; i < t.length; i++) {
+    let c = t[i];
+    r = r.replaceAll(c, a(c));
   }
-  e.innerHTML = o;
+  e.innerHTML = r;
 }
-function r(e, n) {
+function o(e, t) {
   document.querySelectorAll(e).forEach(
-    (o) => t(o, n)
+    (r) => n(r, t)
   );
 }
 function d() {
-  document.querySelectorAll("#navigation_readings").forEach((e) => t(e, [
+  return [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+}
+function h() {
+  document.querySelectorAll("#navigation_readings").forEach((e) => n(e, [
     "See previous notifications…",
     "Nothing new for you."
-  ])), document.querySelectorAll("#navigation_readings section.readings--reads").forEach((e) => t(e, ["Previous notifications"])), document.querySelectorAll("#navigation_readings section.readings--unreads").forEach((e) => t(e, ["New for you", "Mark all read"])), document.querySelectorAll("#navigation_readings section.readings--memories h3").forEach((e) => {
+  ])), document.querySelectorAll("#navigation_readings section.readings--reads").forEach((e) => n(e, ["Previous notifications"])), document.querySelectorAll("#navigation_readings section.readings--unreads").forEach((e) => n(e, ["New for you", "Mark all read"])), document.querySelectorAll("#navigation_readings section.readings--memories h3").forEach((e) => {
     e.innerHTML = e.innerHTML.replace(
       "Don’t Forget",
       a("Don't Forget")
@@ -43,8 +66,8 @@ function d() {
     );
   });
 }
-function _() {
-  r("#navigation_my_stuff", [
+function p() {
+  o("#navigation_my_stuff", [
     "My Assignments",
     "My Bookmarks",
     "My Schedule",
@@ -57,14 +80,14 @@ function _() {
     "for more recent history"
   ]);
 }
-function m() {
-  r("#navigation_pings", [
+function y() {
+  o("#navigation_pings", [
     "Start a private chat with…",
     "Recent Pings"
   ]), document.querySelector("#circle_users").focus();
 }
-function h() {
-  r("[data-menu-section=search] .expanded_content", [
+function f() {
+  o("[data-menu-section=search] .expanded_content", [
     "Search for…",
     "Search Everything",
     "by Anyone",
@@ -83,23 +106,23 @@ function h() {
     "To-dos"
   ]), document.querySelector("#search_q").focus();
 }
-function f(e, n) {
-  var o = setInterval(() => {
-    document.querySelector(e).classList.contains("loading") || (n(), u(400).then(() => {
-      n(), clearInterval(o);
+function g(e, t) {
+  var r = setInterval(() => {
+    document.querySelector(e).classList.contains("loading") || (t(), m(400).then(() => {
+      t(), clearInterval(r);
     }));
   }, 200);
 }
-function s(e, n) {
-  document.querySelector(e).addEventListener("mousedown", (o) => {
-    f(
+function s(e, t) {
+  document.querySelector(e).addEventListener("mousedown", (r) => {
+    g(
       e,
-      n
+      t
     );
   });
 }
-let p = function() {
-  y(), g(), v(), S(), r(".nav__main .nav__item .nav__link", [
+function v() {
+  S(), w(), A(), M(), o(".nav__main .nav__item .nav__link", [
     "Home",
     "Lineup",
     "Pings",
@@ -107,37 +130,37 @@ let p = function() {
     "Activity",
     "My Stuff",
     "Find"
-  ]), r(".nav__main .nav__item .nav__link span", [
+  ]), o(".nav__main .nav__item .nav__link span", [
     "Me"
   ]);
-};
-function y() {
-  s(
-    '[data-load-target="#navigation_readings"]',
-    d
-  );
-}
-function g() {
-  s(
-    '[data-load-target="#navigation_my_stuff"]',
-    _
-  );
-}
-function v() {
-  s(
-    '[data-load-target="#navigation_pings"] a.nav__link',
-    m
-  );
 }
 function S() {
   s(
-    'li[data-menu-section="search"] a.nav__link',
+    '[data-load-target="#navigation_readings"]',
     h
   );
 }
+function w() {
+  s(
+    '[data-load-target="#navigation_my_stuff"]',
+    p
+  );
+}
+function A() {
+  s(
+    '[data-load-target="#navigation_pings"] a.nav__link',
+    y
+  );
+}
 function M() {
+  s(
+    'li[data-menu-section="search"] a.nav__link',
+    f
+  );
+}
+function b() {
   document.querySelectorAll(".schedule-day__dates").forEach(
-    (e) => t(e, [
+    (e) => n(e, [
       "Mon",
       "Tue",
       "Wed",
@@ -159,65 +182,48 @@ function M() {
       "Dec"
     ])
   ), document.querySelectorAll("table.calendar-grid__table thead th").forEach(
-    (e) => t(e, [
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat",
-      "Sun",
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
+    (e) => n(e, [
+      ...d(),
+      ...arrayAbbrWeekdays()
     ])
-  ), r(".schedule-day__events", [
+  ), o(".schedule-day__events", [
     "Nothing’s on the schedule"
   ]);
 }
-function A() {
-  document.querySelectorAll(".project-index__mystuff-header").forEach((e) => t(e, [
+function T() {
+  document.querySelectorAll(".project-index__mystuff-header").forEach((e) => n(e, [
     "Your Assignments"
-  ])), document.querySelectorAll(".project-index__assignments").forEach((e) => t(e, [
+  ])), document.querySelectorAll(".project-index__assignments").forEach((e) => n(e, [
     "Up next –",
     "Stuff due soon and recently assigned",
     "see all"
   ]));
 }
-function w() {
-  document.querySelectorAll(".panel-home__buttons").forEach((e) => t(e, ["Make a new project", "Invite people"])), document.querySelectorAll("header p").forEach(
-    (e) => t(e, [
+function E() {
+  document.querySelectorAll(".panel-home__buttons").forEach((e) => n(e, ["Make a new project", "Invite people"])), document.querySelectorAll("header p").forEach(
+    (e) => n(e, [
       "Pinned &amp; recent projects below",
       "View all in a list",
       "View templates",
       "Press",
       "anytime to jump"
     ])
-  ), document.querySelectorAll("#home_project_cards").forEach((e) => t(e, ["Recently visited"])), document.querySelectorAll("section.project-index__mystuff").forEach(
-    (e) => t(e, [
+  ), document.querySelectorAll("#home_project_cards").forEach((e) => n(e, ["Recently visited"])), document.querySelectorAll("section.project-index__mystuff").forEach(
+    (e) => n(e, [
       "Your Schedule",
       "A few upcoming events",
       "see all"
     ])
   ), l(
     ".schedule-day:not(.schedule-day--placeholder)",
-    M
+    b
   ), l(
     ".project-index__assignments ul li",
-    A
+    T
   );
 }
-function b() {
-  r(".action-sheet__content", [
+function j() {
+  o(".action-sheet__content", [
     "Pin project",
     "Unpin project",
     "Switch to just following",
@@ -229,27 +235,52 @@ function b() {
     "See items in the trash",
     "For developers",
     "Set up webhooks"
+  ]), o(".panel--project header", [
+    "Set up people",
+    "just following"
+  ]), o(".latest-activity__project-headline", [
+    "Project Activity"
+  ]), o(".latest-activity--project .date_divider", [
+    "Today",
+    "Yesterday",
+    ...d()
+  ]), o(".door-item", [
+    "Open up"
   ]);
 }
-function E() {
-  let n = window.location.href.replace("//", "");
-  switch (n = n.substring(n.indexOf("/")).replaceAll(/\d+/g, "1").replace(/\/$/, ""), p(), n) {
+function u(e = !1) {
+  let t = _();
+  switch (e && v(), t) {
     case "/1":
     case "/1/projects":
-      w();
+      E();
       break;
     case "/1/projects/1":
-      b();
+      j();
       break;
   }
 }
-var T = "pt-BR";
+function q() {
+  window.bc_trans_route = null, setInterval(() => {
+    let e = _();
+    if (window.bc_trans_route === null) {
+      console.log("primeira página"), u(!0), window.bc_trans_route = e;
+      return;
+    }
+    e != window.bc_trans_route && (console.log("pagina alterada"), u(!1)), window.bc_trans_route = e;
+  }, 1e3);
+}
+function _() {
+  let t = window.location.href.replace("//", "");
+  return route = t.substring(t.indexOf("/")).replaceAll(/\d+/g, "1").replace(/\/$/, ""), route;
+}
+var L = "pt-BR";
 window.bc_trans_map = null;
-var q = chrome.runtime.getURL(`lang/${T}.json`);
+var x = chrome.runtime.getURL(`lang/${L}.json`);
 (function() {
-  fetch(q).then((e) => e.json()).then((e) => {
+  fetch(x).then((e) => e.json()).then((e) => {
     window.bc_trans_map = e;
   }).then(() => {
-    E();
+    q();
   });
 })();

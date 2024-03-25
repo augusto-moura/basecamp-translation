@@ -2,17 +2,14 @@ import { translateMainMenu } from "../section-translators/main-menu";
 import { translateHomePage } from "./home";
 import { translateProjectPage } from "./project";
 
-export function translateCurrentPage(){
-	let fullUrl = window.location.href;
-	let url = fullUrl.replace('//', '');
-
-	url = url.substring(url.indexOf('/'))
-		.replaceAll(/\d+/g, '1')
-		.replace(/\/$/, '')
+export function translateCurrentPage(shouldTranslateMainMenu = false){
+	let route = getCurrentRoute();
 	
-	translateMainMenu();
+	if(shouldTranslateMainMenu){
+		translateMainMenu();
+	}
 
-	switch(url){
+	switch(route){
 		case '/1':
 		case '/1/projects':
 			translateHomePage();
@@ -21,4 +18,38 @@ export function translateCurrentPage(){
 			translateProjectPage();
 		break;
 	}
+}
+
+export function listenForPageChangeAndTranslateCurrentPage(){
+	window.bc_trans_route = null;
+
+	setInterval(() => {
+		let currentRoute = getCurrentRoute();
+
+		if(window.bc_trans_route === null){
+			console.log('primeira página');
+			translateCurrentPage(true);
+
+			window.bc_trans_route = currentRoute;
+			return;
+		}
+
+		if(currentRoute != window.bc_trans_route){
+			console.log('pagina alterada');
+			translateCurrentPage(false);
+		}
+
+		window.bc_trans_route = currentRoute;
+	}, 1000);
+}
+
+function getCurrentRoute(){
+	let fullUrl = window.location.href;
+	let url = fullUrl.replace('//', '');
+
+	route = url.substring(url.indexOf('/'))
+		.replaceAll(/\d+/g, '1')
+		.replace(/\/$/, '')
+
+	return route;
 }

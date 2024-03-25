@@ -117,7 +117,7 @@ export function addListenerToMenuItem(menuItemSelector, fnTranslateExpandedConte
 		});
 }
 
-export let translateMainMenu = function () {
+export function translateMainMenu() {
 	addListenerToHeyMenuItem();
 	addListenerToMyAreaMenuItem();
 	addListenerToPingsMenuItem();

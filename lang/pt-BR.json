@@ -40,7 +40,14 @@
 	"Oct": "Out",
 	"Nov": "Nov",
 	"Dec": "Dez",
-	"January" : "",
+	"Monday": "Segunda",
+	"Tuesday": "Terça",
+	"Wednesday": "Quarta",
+	"Thursday": "Quinta",
+	"Friday": "Sexta",
+	"Saturday": "Sábado",
+	"Sunday": "Domingo",
+	"January" : "Janeiro",
 	"February" : "Fevereiro",
 	"March" : "Março",
 	"April" : "Abril",
@@ -110,5 +117,10 @@
 	"Archive or delete": "Arquivar ou deletar",
 	"See items in the trash": "Ver itens na lixeira",
 	"For developers": "Para desenvolvedores",
-	"Set up webhooks": "Definir webhooks"
+	"Set up webhooks": "Definir webhooks",
+	"just following": "apenas seguindo",
+	"Project Activity": "Atividade do Projeto",
+	"Open up": "Abrir",
+	"Today": "Hoje",
+	"Yesterday": "Ontem"
 }

@@ -25,7 +25,7 @@ export function __element(element, stringsToTranslate) {
 
 	for (i = 0; i < stringsToTranslate.length; i++) {
 		let stringToTranslate = stringsToTranslate[i];
-		newHtml = newHtml.replace(stringToTranslate, __(stringToTranslate));
+		newHtml = newHtml.replaceAll(stringToTranslate, __(stringToTranslate));
 	}
 
 	element.innerHTML = newHtml;
@@ -36,4 +36,40 @@ export function __selector(selector, stringsToTranslate) {
 		.forEach(
 			element => __element(element, stringsToTranslate)
 		);
+}
+
+export function arrayWeekdaysAndMonths(){
+	return [
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+		"Sunday",
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	];
+}
+
+export function arrayAbbrWeekdays(){
+	return [
+		"Mon",
+		"Tue",
+		"Wed",
+		"Thu",
+		"Fri",
+		"Sat",
+		"Sun",
+	];
 }

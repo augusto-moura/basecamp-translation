@@ -1,4 +1,4 @@
-import { translateCurrentPage } from "./page-translators/page-translator.js";
+import { listenForPageChangeAndTranslateCurrentPage } from "./page-translators/page-translator.js";
 
 //TODO: listen to history API
 
@@ -13,6 +13,6 @@ var bc_trans_map_url = chrome.runtime.getURL(`lang/${bc_trans_locale}.json`);
 			window.bc_trans_map = trans_map_obj;
 		})
 		.then(() => {
-			translateCurrentPage();
+			listenForPageChangeAndTranslateCurrentPage();
 		});
 })();

@@ -1,4 +1,4 @@
-import { __, __element, __selector, execute_after_element_exists } from "../utils";
+import { __, __element, __selector, arrayWeekdaysAndMonths, execute_after_element_exists } from "../utils";
 
 function bc_trans_schedule_widget() {
 	//TODO: translate "Apr 14" to "14/04"
@@ -33,25 +33,8 @@ function bc_trans_schedule_widget() {
 		.querySelectorAll("table.calendar-grid__table thead th")
 		.forEach((el) =>
 			__element(el, [
-				"Mon",
-				"Tue",
-				"Wed",
-				"Thu",
-				"Fri",
-				"Sat",
-				"Sun",
-				"January",
-				"February",
-				"March",
-				"April",
-				"May",
-				"June",
-				"July",
-				"August",
-				"September",
-				"October",
-				"November",
-				"December",
+				...arrayWeekdaysAndMonths(),
+				...arrayAbbrWeekdays(),
 			])
 		);
 
