@@ -1,10 +1,10 @@
 function m(e) {
-  return new Promise((t) => setTimeout(t, e));
+  return new Promise((n) => setTimeout(n, e));
 }
-function l(e, t) {
+function s(e, n) {
   var r = setInterval(() => {
     if (document.querySelector(e)) {
-      setTimeout(t, 400), clearInterval(r);
+      setTimeout(n, 400), clearInterval(r);
       return;
     }
   }, 200);
@@ -12,17 +12,17 @@ function l(e, t) {
 function a(e) {
   return window.bc_trans_map[e] ?? e;
 }
-function n(e, t) {
+function o(e, n) {
   let r = e.innerHTML;
-  for (i = 0; i < t.length; i++) {
-    let c = t[i];
+  for (i = 0; i < n.length; i++) {
+    let c = n[i];
     r = r.replaceAll(c, a(c));
   }
   e.innerHTML = r;
 }
-function o(e, t) {
+function t(e, n) {
   document.querySelectorAll(e).forEach(
-    (r) => n(r, t)
+    (r) => o(r, n)
   );
 }
 function d() {
@@ -48,11 +48,11 @@ function d() {
     "December"
   ];
 }
-function h() {
-  document.querySelectorAll("#navigation_readings").forEach((e) => n(e, [
+function p() {
+  document.querySelectorAll("#navigation_readings").forEach((e) => o(e, [
     "See previous notifications…",
     "Nothing new for you."
-  ])), document.querySelectorAll("#navigation_readings section.readings--reads").forEach((e) => n(e, ["Previous notifications"])), document.querySelectorAll("#navigation_readings section.readings--unreads").forEach((e) => n(e, ["New for you", "Mark all read"])), document.querySelectorAll("#navigation_readings section.readings--memories h3").forEach((e) => {
+  ])), document.querySelectorAll("#navigation_readings section.readings--reads").forEach((e) => o(e, ["Previous notifications"])), document.querySelectorAll("#navigation_readings section.readings--unreads").forEach((e) => o(e, ["New for you", "Mark all read"])), document.querySelectorAll("#navigation_readings section.readings--memories h3").forEach((e) => {
     e.innerHTML = e.innerHTML.replace(
       "Don’t Forget",
       a("Don't Forget")
@@ -66,8 +66,8 @@ function h() {
     );
   });
 }
-function p() {
-  o("#navigation_my_stuff", [
+function h() {
+  t("#navigation_my_stuff", [
     "My Assignments",
     "My Bookmarks",
     "My Schedule",
@@ -80,14 +80,14 @@ function p() {
     "for more recent history"
   ]);
 }
-function y() {
-  o("#navigation_pings", [
+function f() {
+  t("#navigation_pings", [
     "Start a private chat with…",
     "Recent Pings"
   ]), document.querySelector("#circle_users").focus();
 }
-function f() {
-  o("[data-menu-section=search] .expanded_content", [
+function y() {
+  t("[data-menu-section=search] .expanded_content", [
     "Search for…",
     "Search Everything",
     "by Anyone",
@@ -106,23 +106,23 @@ function f() {
     "To-dos"
   ]), document.querySelector("#search_q").focus();
 }
-function g(e, t) {
+function g(e, n) {
   var r = setInterval(() => {
-    document.querySelector(e).classList.contains("loading") || (t(), m(400).then(() => {
-      t(), clearInterval(r);
+    document.querySelector(e).classList.contains("loading") || (n(), m(400).then(() => {
+      n(), clearInterval(r);
     }));
   }, 200);
 }
-function s(e, t) {
+function l(e, n) {
   document.querySelector(e).addEventListener("mousedown", (r) => {
     g(
       e,
-      t
+      n
     );
   });
 }
 function v() {
-  S(), w(), A(), M(), o(".nav__main .nav__item .nav__link", [
+  S(), b(), w(), A(), t(".nav__main .nav__item .nav__link", [
     "Home",
     "Lineup",
     "Pings",
@@ -130,37 +130,37 @@ function v() {
     "Activity",
     "My Stuff",
     "Find"
-  ]), o(".nav__main .nav__item .nav__link span", [
+  ]), t(".nav__main .nav__item .nav__link span", [
     "Me"
   ]);
 }
 function S() {
-  s(
+  l(
     '[data-load-target="#navigation_readings"]',
+    p
+  );
+}
+function b() {
+  l(
+    '[data-load-target="#navigation_my_stuff"]',
     h
   );
 }
 function w() {
-  s(
-    '[data-load-target="#navigation_my_stuff"]',
-    p
+  l(
+    '[data-load-target="#navigation_pings"] a.nav__link',
+    f
   );
 }
 function A() {
-  s(
-    '[data-load-target="#navigation_pings"] a.nav__link',
+  l(
+    'li[data-menu-section="search"] a.nav__link',
     y
   );
 }
 function M() {
-  s(
-    'li[data-menu-section="search"] a.nav__link',
-    f
-  );
-}
-function b() {
   document.querySelectorAll(".schedule-day__dates").forEach(
-    (e) => n(e, [
+    (e) => o(e, [
       "Mon",
       "Tue",
       "Wed",
@@ -182,48 +182,48 @@ function b() {
       "Dec"
     ])
   ), document.querySelectorAll("table.calendar-grid__table thead th").forEach(
-    (e) => n(e, [
+    (e) => o(e, [
       ...d(),
       ...arrayAbbrWeekdays()
     ])
-  ), o(".schedule-day__events", [
+  ), t(".schedule-day__events", [
     "Nothing’s on the schedule"
   ]);
 }
 function T() {
-  document.querySelectorAll(".project-index__mystuff-header").forEach((e) => n(e, [
+  document.querySelectorAll(".project-index__mystuff-header").forEach((e) => o(e, [
     "Your Assignments"
-  ])), document.querySelectorAll(".project-index__assignments").forEach((e) => n(e, [
+  ])), document.querySelectorAll(".project-index__assignments").forEach((e) => o(e, [
     "Up next –",
     "Stuff due soon and recently assigned",
     "see all"
   ]));
 }
-function E() {
-  document.querySelectorAll(".panel-home__buttons").forEach((e) => n(e, ["Make a new project", "Invite people"])), document.querySelectorAll("header p").forEach(
-    (e) => n(e, [
+function k() {
+  document.querySelectorAll(".panel-home__buttons").forEach((e) => o(e, ["Make a new project", "Invite people"])), document.querySelectorAll("header p").forEach(
+    (e) => o(e, [
       "Pinned &amp; recent projects below",
       "View all in a list",
       "View templates",
       "Press",
       "anytime to jump"
     ])
-  ), document.querySelectorAll("#home_project_cards").forEach((e) => n(e, ["Recently visited"])), document.querySelectorAll("section.project-index__mystuff").forEach(
-    (e) => n(e, [
+  ), document.querySelectorAll("#home_project_cards").forEach((e) => o(e, ["Recently visited"])), document.querySelectorAll("section.project-index__mystuff").forEach(
+    (e) => o(e, [
       "Your Schedule",
       "A few upcoming events",
       "see all"
     ])
-  ), l(
+  ), s(
     ".schedule-day:not(.schedule-day--placeholder)",
-    b
-  ), l(
+    M
+  ), s(
     ".project-index__assignments ul li",
     T
   );
 }
 function j() {
-  o(".action-sheet__content", [
+  t(".action-sheet__content", [
     "Pin project",
     "Unpin project",
     "Switch to just following",
@@ -235,28 +235,52 @@ function j() {
     "See items in the trash",
     "For developers",
     "Set up webhooks"
-  ]), o(".panel--project header", [
+  ]), t(".panel--project header", [
     "Set up people",
     "just following"
-  ]), o(".latest-activity__project-headline", [
+  ]), t(".latest-activity__project-headline", [
     "Project Activity"
-  ]), o(".latest-activity--project .date_divider", [
+  ]), t(".latest-activity--project .date_divider", [
     "Today",
     "Yesterday",
     ...d()
-  ]), o(".door-item", [
+  ]), t(".door-item", [
     "Open up"
   ]);
 }
+function E() {
+  t("h1", [
+    "Set up tools for this project"
+  ]), t(".panel--project-change-tools", [
+    "Open a Door to an external service like GitHub, Slack, Trello, etc..."
+  ]), t("turbo-frame.card", [
+    "Open a Door to an external service like GitHub, Slack, Trello, etc..."
+  ]), t("turbo-frame.card .break", [
+    "Rename"
+  ]), t("turbo-frame.card .dock-toggle__copy-footer", [
+    "Add another",
+    "Edit door"
+  ]), t("turbo-frame.card .dock-toggle__delete-button", [
+    "Delete"
+  ]), t(".when-no-cards", [
+    "Tools you aren’t using",
+    "You’ll still receive to-do reminders and notifications about upcoming events, even if the tools are hidden."
+  ]), t("footer", [
+    "All set, take me back to the project"
+  ]);
+}
 function u(e = !1) {
-  let t = _();
-  switch (e && v(), t) {
+  let n = _();
+  switch (e && v(), n) {
     case "/1":
     case "/1/projects":
-      E();
+      k();
       break;
     case "/1/projects/1":
       j();
+      break;
+    case "/1/buckets/1/dock/edit":
+      E();
       break;
   }
 }
@@ -271,8 +295,8 @@ function q() {
   }, 1e3);
 }
 function _() {
-  let t = window.location.href.replace("//", "");
-  return route = t.substring(t.indexOf("/")).replaceAll(/\d+/g, "1").replace(/\/$/, ""), route;
+  let n = window.location.href.replace("//", "");
+  return route = n.substring(n.indexOf("/")).replaceAll(/\d+/g, "1").replace(/\/$/, ""), route;
 }
 var L = "pt-BR";
 window.bc_trans_map = null;

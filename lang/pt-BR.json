@@ -122,5 +122,15 @@
 	"Project Activity": "Atividade do Projeto",
 	"Open up": "Abrir",
 	"Today": "Hoje",
-	"Yesterday": "Ontem"
+	"Yesterday": "Ontem",
+
+	"Set up tools for this project": "Definir ferramentas para este projeto",
+	"Open a Door to an external service like GitHub, Slack, Trello, etc...": "Abrir uma Porta para um serviço externo como GitHub, Slack, Trello, etc...",
+	"Rename": "Renomear",
+	"Add another": "Adicionar outro",
+	"Edit door": "Editar porta",
+	"Tools you aren’t using": "Ferramentas que você não está usando",
+	"You’ll still receive to-do reminders and notifications about upcoming events, even if the tools are hidden.": "Você ainda receberá lembretes de afazeres e notificações sobre eventos próximos, mesmo se as ferramentas estiverem escondidas.",
+	"All set, take me back to the project": "Tudo certo, leve-me de volta ao projeto",
+	"Delete": "Remover"
 }
