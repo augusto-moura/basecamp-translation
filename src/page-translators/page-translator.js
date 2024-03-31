@@ -1,4 +1,5 @@
 import { translateMainMenu } from "../section-translators/main-menu";
+import { translateCardTablePage, translateNewCardModal } from "./card-table";
 import { translateHomePage } from "./home";
 import { translateProjectPage } from "./project";
 import { translateSetUpToolsPage } from "./set-up-tools";
@@ -20,6 +21,12 @@ export function translateCurrentPage(shouldTranslateMainMenu = false){
 		break;
 		case '/1/buckets/1/dock/edit': 
 			translateSetUpToolsPage();
+		break;
+		case '/1/buckets/1/card_tables/1':
+			translateCardTablePage();
+		break;
+		case '/1/buckets/1/card_tables/lists/1/cards/new':
+			translateNewCardModal();
 		break;
 	}
 }

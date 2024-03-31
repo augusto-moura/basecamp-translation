@@ -38,6 +38,45 @@ export function __selector(selector, stringsToTranslate) {
 		);
 }
 
+export function __attributeFromSelector(selector, attribute, stringsToTranslate) {
+	document.querySelectorAll(selector)
+		.forEach(element => {
+			if( ! element.hasAttribute(attribute)){
+				return;
+			}
+			
+			const currentAttrValue = element.getAttribute(attribute);
+			let newAttrValue = currentAttrValue;
+
+			for (i = 0; i < stringsToTranslate.length; i++) {
+				let stringToTranslate = stringsToTranslate[i];
+				newAttrValue = newAttrValue.replaceAll(stringToTranslate, __(stringToTranslate));
+			}
+
+			element.setAttribute(attribute, newAttrValue);
+		});
+}
+
+export function waitSelectorToMatchOtherSelectorThenExecute(elementSelector, triggerSelector, fnCallback){
+	var checkIfElementMatchesSelector = setInterval(() => {
+		let elementWithLoading = document.querySelector(elementSelector);
+		if( ! elementWithLoading){
+			clearInterval(checkIfElementMatchesSelector);
+			debugger;
+			return;
+		}
+
+		if (elementWithLoading.matches(triggerSelector)) {
+			fnCallback();
+
+			delay(400).then(() => {
+				fnCallback();
+				clearInterval(checkIfElementMatchesSelector);
+			});
+		}
+	}, 200);
+}
+
 export function arrayWeekdaysAndMonths(){
 	return [
 		"Monday",
@@ -71,5 +110,22 @@ export function arrayAbbrWeekdays(){
 		"Fri",
 		"Sat",
 		"Sun",
+	];
+}
+
+export function arrayAbbrMonths(){
+	return [
+		"Jan",
+		"Feb",
+		"Mar",
+		"Apr",
+		"May",
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sep",
+		"Oct",
+		"Nov",
+		"Dec",
 	];
 }
